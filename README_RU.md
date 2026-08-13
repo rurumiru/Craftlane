@@ -1110,7 +1110,7 @@ Craftlane находится в стадии активной разработк
 
 ## Copyright
 
-Copyright © 2026 Your Name
+Copyright © 2026 rurumiru
 
 Craftlane is open-source software licensed under the GNU Affero General Public License v3.0.
 
