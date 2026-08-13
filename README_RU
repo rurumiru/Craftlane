@@ -1,0 +1,120 @@
+````markdown
+## Основная идея
+
+Craftlane рассматривает проект как последовательность чётко определённых действий и обязательств между заказчиком и исполнителем.
+
+```mermaid
+flowchart TD
+    A["Создание проекта"] --> B["Публикация"]
+    B --> C["Отклики специалистов"]
+    C --> D["Выбор исполнителя"]
+    D --> E["Контракт"]
+    E --> F["Этапы работы"]
+    F --> G["Сдача результата"]
+    G --> H["Согласование"]
+    H --> I["Оплата"]
+    I --> J["Отзывы и репутация"]
+````
+
+Основная модель Craftlane:
+
+**Проект → Исполнитель → Контракт → Работа → Результат → Оплата → Репутация**
+
+Платформа рассматривает проект не как набор отдельных часов работы, а как последовательность конкретных обязательств, результатов и взаиморасчётов.
+
+````
+
+И дальше **весь README лучше привести к такому стилю**.
+
+Например, вместо:
+
+```text
+Project
+├── Client
+├── Requirements
+├── Applications
+├── Contract
+├── Milestones
+├── Messages
+├── Files
+├── Payments
+└── Reviews
+````
+
+использовать:
+
+```mermaid
+flowchart LR
+    Project --> Client
+    Project --> Requirements
+    Project --> Applications
+    Project --> Contract
+    Project --> Milestones
+    Project --> Messages
+    Project --> Files
+    Project --> Payments
+    Project --> Reviews
+```
+
+Для жизненного цикла:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> Published
+    Published --> Applications
+    Applications --> FreelancerSelected
+    FreelancerSelected --> ContractActive
+    ContractActive --> InProgress
+    InProgress --> Review
+    Review --> Completed
+
+    Published --> Cancelled
+    InProgress --> Disputed
+    Review --> Disputed
+```
+
+Для архитектуры:
+
+```mermaid
+flowchart TB
+    Browser["Браузер"]
+
+    Browser --> Phoenix["Phoenix"]
+
+    Phoenix --> LiveView["Phoenix LiveView"]
+    Phoenix --> API["JSON API"]
+    Phoenix --> Channels["Phoenix Channels"]
+
+    LiveView --> Contexts["Domain Contexts"]
+    API --> Contexts
+    Channels --> Contexts
+
+    Contexts --> PostgreSQL["PostgreSQL"]
+    Contexts --> Oban["Oban"]
+    Contexts --> Storage["S3 / R2"]
+```
+
+А для доменной структуры:
+
+```mermaid
+flowchart TB
+    Craftlane["Craftlane"]
+
+    Craftlane --> Accounts
+    Craftlane --> Profiles
+    Craftlane --> Organizations
+    Craftlane --> Projects
+    Craftlane --> Applications
+    Craftlane --> Contracts
+    Craftlane --> Milestones
+    Craftlane --> Messaging
+    Craftlane --> Payments
+    Craftlane --> Reviews
+    Craftlane --> Disputes
+    Craftlane --> Notifications
+    Craftlane --> Files
+```
+
+
+Если делать **полностью нормальный production-level README для GitHub**, его лучше оформить именно в этом стиле: чистый Markdown + Mermaid + аккуратные таблицы + badges + Installation + Configuration + Development + Testing + Contributing + License + Copyright/Trademark.
